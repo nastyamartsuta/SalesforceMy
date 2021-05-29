@@ -6,6 +6,7 @@ import pages.HomePage;
 import static org.testng.Assert.assertTrue;
 
 public class BaseWithLoginTest extends BaseTest {
+
     @Override
     @BeforeMethod
     public void setUp() {

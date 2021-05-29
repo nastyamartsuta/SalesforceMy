@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends BasePage {
 
     public static final By TITLE = By.xpath("//*[@title='Sales']");
+
     public HomePage(WebDriver driver){
         super(driver);
     }
