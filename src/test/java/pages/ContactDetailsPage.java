@@ -24,8 +24,6 @@ public class ContactDetailsPage extends BasePage {
     public void validateContact(Contact contact) {
         validateInput("Name", String.format("%s %s %s", contact.getSalutation(), contact.getFirstName(),
                 contact.getLastName()));
-        validateInput("Account Name", String.format("%s\n%s %s %s",contact.getAccountName(),
-                "Open",contact.getAccountName(),"Preview"));
         validateInput("Title", contact.getTitle());
         validateInput("Email", contact.getEmail());
         validateInput("Phone", contact.getPhone());
