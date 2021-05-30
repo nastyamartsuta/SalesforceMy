@@ -5,8 +5,8 @@ import org.testng.annotations.Test;
 
 public class AccountTest extends BaseWithLoginTest {
 
-    @Test
-    public void accountShouldBeCreated() {
+    @Test(description = "Creating and validating an account", retryAnalyzer = Retry.class)
+    public void creatingAndValidatingAnAccount() {
         //ЛОГИН
         //ОТКРЫТЬ СТРАНИЦУ АККАУНТОВ
         //НАЖАТЬ NEW

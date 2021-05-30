@@ -6,14 +6,14 @@ import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "User name and password should be required", retryAnalyzer = Retry.class)
     public void login() {
         boolean isOpened = loginPage
                 .open()
                 .isPageOpened();
         assertTrue(isOpened, "Страница логина не открылась");
         isOpened = loginPage
-                .login("nastya.martsuta-gugr@force.com", "password97" )
+                .login("nastya.martsuta-gugr@force.com", "password97")
                 .isPageOpened();
         assertTrue(isOpened, "Страница Home Page не открылась");
 
