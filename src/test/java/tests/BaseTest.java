@@ -4,9 +4,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.openqa.selenium.opera.OperaDriver;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 import pages.AccountListPage;
 import pages.ContactListPage;
 import pages.LoginPage;
@@ -20,7 +20,11 @@ public class BaseTest {
     AccountListPage accountListPage;
     ContactListPage contactListPage;
 
-    @BeforeMethod
+//    @Parameters({"browser"})
+    @BeforeMethod(description = "Open Browser")
+//    public void setUp(@Optional("chrome") String browser, ITestContext testContext) {
+
+//        if (browser.equals("chrome")) {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -28,12 +32,18 @@ public class BaseTest {
         options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); //НЕЯВНЫЕ ОЖИДАНИЯ
+//        } else if (browser.equals("opera")) {
+//            WebDriverManager.operadriver().setup();
+//            driver = new OperaDriver();
+//        }
+//        testContext.setAttribute("driver", driver);
+
         loginPage = new LoginPage(driver);
         accountListPage = new AccountListPage(driver);
         contactListPage = new ContactListPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, description = "Close Browser")
     public void tearDown() {
         driver.quit();
     }

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,11 +17,13 @@ public class AccountListPage extends BasePage {
         return isExist(title);
     }
 
+    @Step("Open accounts page")
     public AccountListPage open() {
         driver.get(BASE_URL + "/lightning/o/Account/home");
         return this;
     }
 
+    @Step("Click NEW button on accounts page")
     public AccountModal clickNew() {
         driver.findElement(NEW_BUTTON).click();
         return new AccountModal(driver);

@@ -3,6 +3,7 @@ package pages;
 import elements.DropDown;
 import elements.Input;
 import elements.TextArea;
+import io.qameta.allure.Step;
 import models.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class AccountModal extends BasePage {
         return isExist(MODAL_TITLE);
     }
 
+    @Step("Fill in form for new account")
     public AccountDetailsPage create(Account account) {
         new Input(driver, "Account Name").writeAccount(account.getAccountName());
         new Input(driver, "Phone").writeAccount(account.getPhone());

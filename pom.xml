@@ -16,6 +16,8 @@
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>4.4.1</webdrivermanager.version>
         <suiteXmlFile>src/test/resources/smoke.xml</suiteXmlFile>
+        <aspect.version>1.9.1</aspect.version>
+        <allure.version>2.10.0</allure.version>
     </properties>
 
     <dependencies>
@@ -40,6 +42,19 @@
             <version>${webdrivermanager.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.9</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspect.version}</version>
+        </dependency>
     </dependencies>
 
 <build>
@@ -52,7 +67,16 @@
                 <suiteXmlFiles>
                     <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                 </suiteXmlFiles>
+                <argLine>
+                    -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspect.version}/aspectjweaver-${aspect.version}.jar -Xmx256m
+                </argLine>
             </configuration>
+
+        </plugin>
+        <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>${allure.version}</version>
         </plugin>
     </plugins>
 </build>

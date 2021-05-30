@@ -3,9 +3,11 @@ package pages;
 import elements.DropDown;
 import elements.Input;
 import elements.TextArea;
+import io.qameta.allure.Step;
 import models.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.AllureUtils;
 
 public class ContactModal extends BasePage {
     public static final By MODAL_TITLE = By.xpath("//h2[text()='New Contact']");
@@ -19,6 +21,7 @@ public class ContactModal extends BasePage {
         return isExist(MODAL_TITLE);
     }
 
+    @Step("Fill in form for new contact")
     public ContactDetailsPage create(Contact contact) {
         new DropDown(driver, "Salutation").selectContact(contact.getSalutation());
         new Input(driver, "First Name").writeContact(contact.getFirstName());
@@ -39,6 +42,7 @@ public class ContactModal extends BasePage {
         new TextArea(driver, "Mailing Street").writeContact(contact.getMailingStreet());
         new DropDown(driver, "Account Name").selectSearchContact(contact.getAccountName());
         save();
+        AllureUtils.takeScreenshot(driver);
         return new ContactDetailsPage(driver);
     }
 
