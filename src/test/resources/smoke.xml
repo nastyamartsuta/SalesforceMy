@@ -8,12 +8,13 @@
         <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="tests.LoginTest"/>
+            <class name="tests.AccountTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Thread 2">
-        <parameter name="browser" value="opera"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
-            <class name="tests.LoginTest"/>
+            <class name="tests.ContactTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>
