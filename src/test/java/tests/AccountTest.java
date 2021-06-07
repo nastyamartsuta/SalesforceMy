@@ -1,11 +1,16 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import models.Account;
+import models.AccountFactory;
 import org.testng.annotations.Test;
+import tests.base.Retry;
 
+@Log4j2
 public class AccountTest extends BaseWithLoginTest {
 
-    @Test(description = "Creating and validating an account", retryAnalyzer = Retry.class)
+//    @Test(description = "Creating and validating an account", retryAnalyzer = Retry.class)
+    @Test(description = "Creating and validating an account")
     public void creatingAndValidatingAnAccount() {
         //ЛОГИН
         //ОТКРЫТЬ СТРАНИЦУ АККАУНТОВ
@@ -14,10 +19,7 @@ public class AccountTest extends BaseWithLoginTest {
         //SAVE
         //ПРОВЕРИТЬ ЛИСТ
 
-        Account account = new Account("Nastya", "375336346622", "tut.by", "",
-                "Minsk", "220107", "Minsk", "Belarus",
-                "Zelva", "231940", "Zelva", "Belarus",
-                "Analyst", "Banking", "Delivery only on weekdays", "Narodnaya", "Pobedu");
+        Account account = AccountFactory.get();
 
         accountListPage
                 .open()

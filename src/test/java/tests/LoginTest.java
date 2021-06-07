@@ -1,12 +1,14 @@
 package tests;
 
 import org.testng.annotations.Test;
+import tests.base.Retry;
 
 import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "User name and password should be required", retryAnalyzer = Retry.class)
+//    @Test(description = "User name and password should be required", retryAnalyzer = Retry.class)
+    @Test(description = "User name and password should be required")
     public void login() {
         boolean isOpened = loginPage
                 .open()

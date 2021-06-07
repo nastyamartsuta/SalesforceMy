@@ -1,18 +1,18 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import models.Contact;
+import models.ContactFactory;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class ContactTest extends BaseWithLoginTest {
 
-    @Test(description = "Creating and validating an account", retryAnalyzer = Retry.class)
+//    @Test(description = "Creating and validating an account", retryAnalyzer = Retry.class)
+    @Test(description = "Creating and validating an account")
     public void creatingAndValidatingAnAccount() {
 
-        Contact contact = new Contact("Ms.", "contact", "contact",
-                "contact", "contact", "contact", "nastya@mail.ru", "35565",
-                "3456514", "contact", "26325", "contact",
-                "contact", "231940", "contact",
-                "contact", "contact", "Nastya");
+        Contact contact = ContactFactory.get();
 
         contactListPage
                 .open()

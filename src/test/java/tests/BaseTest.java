@@ -1,24 +1,31 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.opera.OperaDriver;
-import org.testng.ITestContext;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pages.AccountListPage;
 import pages.ContactListPage;
+import pages.LeadListPage;
 import pages.LoginPage;
+import tests.base.TestListener;
 
 import java.util.concurrent.TimeUnit;
 
-@Listeners(TestListener.class)
+@Log4j2
+//@Listeners(TestListener.class)
 public class BaseTest {
+
+    protected LoginPage loginPage;
+    protected AccountListPage accountListPage;
+    protected ContactListPage contactListPage;
+    protected LeadListPage leadListPage;
     WebDriver driver;
-    LoginPage loginPage;
-    AccountListPage accountListPage;
-    ContactListPage contactListPage;
+    WebDriverWait wait;
+
 
 //    @Parameters({"browser"})
     @BeforeMethod(description = "Open Browser")
@@ -41,9 +48,11 @@ public class BaseTest {
         loginPage = new LoginPage(driver);
         accountListPage = new AccountListPage(driver);
         contactListPage = new ContactListPage(driver);
+        leadListPage = new LeadListPage(driver);
     }
 
-    @AfterMethod(alwaysRun = true, description = "Close Browser")
+//    @AfterMethod(alwaysRun = true, description = "Close Browser")
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }
