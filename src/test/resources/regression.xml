@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="Regression test suite" parallel="tests">
     <listeners>
-        <listener class-name="tests.AnnotationTransformer"/>
+        <listener class-name="tests.base.AnnotationTransformer"/>
     </listeners>
     <test name="Thread 1">
         <parameter name="browser" value="chrome"></parameter>

@@ -17,13 +17,13 @@ public class AccountListPage extends BasePage {
         return isExist(title);
     }
 
-    @Step("Open accounts page")
+    @Step("Open account page")
     public AccountListPage open() {
         driver.get(BASE_URL + "/lightning/o/Account/home");
         return this;
     }
 
-    @Step("Click NEW button on accounts page")
+    @Step("Click NEW button on account page")
     public AccountModal clickNew() {
         driver.findElement(NEW_BUTTON).click();
         return new AccountModal(driver);
